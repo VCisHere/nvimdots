@@ -52,6 +52,14 @@ end
 function config.barbar()
 	vim.g.bufferline = {
 		animation = false,
+		closable = false,
+		icons = false,
+
+		icon_separator_active = '▎',
+		icon_separator_inactive = '▎',
+
+		maximum_padding = 1,
+		maximum_length = 30,
 	}
 end
 
@@ -195,38 +203,10 @@ function config.nvim_gps()
 end
 
 function config.nvim_tree()
-	vim.g.nvim_tree_root_folder_modifier = ":e"
-	vim.g.nvim_tree_icon_padding = " "
-	vim.g.nvim_tree_symlink_arror = "  "
-	vim.g.nvim_tree_respect_buf_cwd = 1
 
-	vim.g.nvim_tree_icons = {
-		["default"] = "", --
-		["symlink"] = "",
-		["git"] = {
-			["unstaged"] = "",
-			["staged"] = "", --
-			["unmerged"] = "שׂ",
-			["renamed"] = "", --
-			["untracked"] = "ﲉ",
-			["deleted"] = "",
-			["ignored"] = "", --◌
-		},
-		["folder"] = {
-			-- ['arrow_open'] = "",
-			-- ['arrow_closed'] = "",
-			["arrow_open"] = "",
-			["arrow_closed"] = "",
-			["default"] = "",
-			["open"] = "",
-			["empty"] = "",
-			["empty_open"] = "",
-			["symlink"] = "",
-			["symlink_open"] = "",
-		},
-	}
 
 	require("nvim-tree").setup({
+		respect_buf_cwd = true,
 		auto_reload_on_write = true,
 		disable_netrw = false,
 		hijack_cursor = true,
@@ -255,6 +235,36 @@ function config.nvim_tree()
 					corner = "└ ",
 					edge = "│ ",
 					none = "  ",
+				},
+			},
+			root_folder_modifier = ":e",
+			icons = {
+				padding = " ",
+				symlink_arrow = "  ",
+				glyphs = {
+					["default"] = "", --
+					["symlink"] = "",
+					["git"] = {
+						["unstaged"] = "",
+						["staged"] = "", --
+						["unmerged"] = "שׂ",
+						["renamed"] = "", --
+						["untracked"] = "ﲉ",
+						["deleted"] = "",
+						["ignored"] = "", --◌
+					},
+					["folder"] = {
+						-- ['arrow_open'] = "",
+						-- ['arrow_closed'] = "",
+						["arrow_open"] = "",
+						["arrow_closed"] = "",
+						["default"] = "",
+						["open"] = "",
+						["empty"] = "",
+						["empty_open"] = "",
+						["symlink"] = "",
+						["symlink_open"] = "",
+					},
 				},
 			},
 		},
